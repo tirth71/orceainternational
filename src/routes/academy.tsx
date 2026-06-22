@@ -23,10 +23,68 @@ import {
   Ship,
   Megaphone,
   ClipboardCheck,
+  TrendingUp,
 } from "lucide-react";
 import { Section, SectionHeading } from "@/components/site/Section";
-import { InquiryForm } from "@/components/site/InquiryForm";
+// import { InquiryForm } from "@/components/site/InquiryForm";
 import academyHero from "@/assets/academy-hero.jpg";
+     import { CheckCircle, Calendar, Clock } from "lucide-react";
+import { motion } from "framer-motion";
+
+
+const learningPaths = [
+  {
+    type: "Online Course",
+    desc: "Learn from anywhere with an internet connection",
+    price: "₹10,000",
+    original: "₹15,000",
+    cta: "Start Online Learning",
+    color: "border-accent",
+    badge: "Most Popular",
+    schedule: { day: "Every Sunday", duration: "4 hours", total: "Duration: 6 Sundays" },
+    features: [
+      "Live Online Lectures on Zoom",
+      "Study Materials",
+      "Copy of Document Templates",
+      "Buyers Communication Templates",
+      "Online Mentor Support",
+      "Lifetime EXIM Updates/News",
+      "Certificate of Completion",
+      "Post-course mentorship to guide your first export",
+      "Free Lifetime Helpdesk Support on Email",
+      "Guidance for Job in Export Import Industry",
+      "Free Assistance for Website & Digital Marketing",
+      "Free Latest Updates on Export Import",
+      "Live Searching Exporter-Importer (Buyers) Data",
+    ],
+  },
+  {
+    type: "Offline Course",
+    desc: "Intensive classroom training with hands-on practice",
+    price: "₹15,000",
+    original: "₹20,000",
+    cta: "Join Classroom Training",
+    color: "border-primary",
+    badge: "Hands-On",
+    schedule: { day: "Every Sunday", duration: "4 hours", total: "Duration: 6 Sundays" },
+    features: [
+      "Face to Face Classroom Training with Expert Faculty",
+      "Printed Study Materials & Document Kits",
+      "Buyers Communication Practice Sessions",
+      "Mock Export-Import Documentation Practice",
+      "Personal Mentor Support",
+      "Lifetime EXIM Updates",
+      "Certificate of Completion",
+      "Post-course mentorship to guide your first export",
+      "Free Lifetime Helpdesk Support on Email",
+      "Guidance for Job in Export Import Industry",
+      "Free Assistance for Website & Digital Marketing",
+      "Free Latest Updates on Export-Import",
+      "Live Searching Exporter-Importer (Buyers) Data",
+    ],
+  },
+];
+
 
 export const Route = createFileRoute("/academy")({
   head: () => ({
@@ -91,113 +149,6 @@ const audiences = [
   },
 ];
 
-const programs = [
-  {
-    icon: BookOpen,
-    title: "Export Import Foundation Program",
-    duration: "6 Weeks",
-    mode: "Online + Offline",
-    audience: "Beginners",
-    modules: [
-      "Introduction to Export Import",
-      "International Trade Basics",
-      "Export Process",
-      "Import Process",
-      "Export Opportunities",
-      "Business Models",
-    ],
-  },
-  {
-    icon: Rocket,
-    title: "Export Business Startup Program",
-    duration: "8 Weeks",
-    mode: "Online + Offline",
-    audience: "Entrepreneurs",
-    modules: [
-      "Product Selection",
-      "Market Research",
-      "Buyer Finding",
-      "International Communication",
-      "Pricing Strategy",
-      "Export Planning",
-      "Global Expansion",
-    ],
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Export Documentation Mastery",
-    duration: "4 Weeks",
-    mode: "Online",
-    audience: "All Levels",
-    modules: [
-      "IEC Registration",
-      "GST / APEDA / RCMC",
-      "Invoice & Packing List",
-      "Shipping Bill",
-      "Bill of Lading",
-      "Letter of Credit",
-      "Certificate of Origin",
-    ],
-  },
-  {
-    icon: Megaphone,
-    title: "International Marketing Program",
-    duration: "6 Weeks",
-    mode: "Online",
-    audience: "Marketers & Founders",
-    modules: [
-      "LinkedIn Marketing",
-      "B2B Lead Generation",
-      "Export Marketing",
-      "Email Marketing",
-      "Alibaba / IndiaMART / TradeIndia",
-    ],
-  },
-  {
-    icon: Search,
-    title: "Buyer Finding Masterclass",
-    duration: "3 Weeks",
-    mode: "Online",
-    audience: "Exporters",
-    modules: [
-      "Importer Search",
-      "Buyer Verification",
-      "Trade Data Analysis",
-      "Lead Generation",
-      "Buyer Communication",
-      "Follow-Up System",
-    ],
-  },
-  {
-    icon: Wheat,
-    title: "Agriculture Export Program",
-    duration: "5 Weeks",
-    mode: "Online + Offline",
-    audience: "Agri Exporters",
-    modules: [
-      "Onion & Potato Export",
-      "Spices Export",
-      "Rice Export",
-      "Fruits & Vegetables",
-      "Packaging Standards",
-    ],
-  },
-  {
-    icon: Ship,
-    title: "Logistics & Supply Chain Program",
-    duration: "5 Weeks",
-    mode: "Online",
-    audience: "Logistics Professionals",
-    modules: [
-      "Shipping Process",
-      "Container Movement",
-      "Freight Forwarding",
-      "CHA Operations",
-      "Warehousing",
-      "International Logistics",
-    ],
-  },
-];
 
 const features = [
   { icon: Video, title: "Live Online Classes", desc: "Interactive Zoom sessions with industry experts." },
@@ -267,26 +218,131 @@ const testimonials = [
   },
 ];
 
-const careers = [
-  "Export Executive",
-  "Import Executive",
-  "Documentation Executive",
-  "Logistics Coordinator",
-  "Supply Chain Executive",
-  "International Marketing Executive",
-  "Export Manager",
-  "Trade Analyst",
+// const careers = [
+//   "Export Executive",
+//   "Import Executive",
+//   "Documentation Executive",
+//   "Logistics Coordinator",
+//   "Supply Chain Executive",
+//   "International Marketing Executive",
+//   "Export Manager",
+//   "Trade Analyst",
+// ];
+
+// const resources = [
+//   "Complete Export Guide",
+//   "Export Readiness Checklist",
+//   "Documentation Templates",
+//   "Product Selection Guide",
+//   "Buyer Search Playbook",
+//   "Export Cost Calculator",
+//   "Country Market Reports",
+// ];
+const careerProfiles = [
+  {
+    profile: "Students & Fresh Graduates",
+    color: "text-blue-600 bg-blue-50 border-blue-100",
+    benefits: [
+      "Skip traditional job hunting — Enter the high-growth global trade sector directly",
+      "Master real-world business skills that universities don't teach",
+      "Land lucrative positions as Export/Import Executive or Trade Finance Assistant",
+      "Entry-level positions typically offer ₹3–6 LPA for course graduates",
+    ],
+  },
+  {
+    profile: "Working Professionals",
+    color: "text-purple-600 bg-purple-50 border-purple-100",
+    benefits: [
+      "Weekend learning — Flexible schedule that fits your current job",
+      "Become a logistics, customs & compliance specialist in high demand",
+      "Double your income potential with trade finance & international sales expertise",
+      "Position yourself for senior management roles in global companies",
+    ],
+  },
+  {
+    profile: "Business Owners & Entrepreneurs",
+    color: "text-amber-600 bg-amber-50 border-amber-100",
+    benefits: [
+      "10x your market reach — Access 195+ countries as potential customers",
+      "Reduce financing costs using government export incentives & subsidies",
+      "Reduce dependency on domestic market fluctuations",
+      "Build a recession-proof business with global diversification",
+    ],
+  },
+  {
+    profile: "Homemakers & Aspiring Entrepreneurs",
+    color: "text-green-600 bg-green-50 border-green-100",
+    benefits: [
+      "Start with zero investment — Build a global business from your laptop",
+      "No experience needed — We teach you everything from scratch",
+      "Achieve financial independence while maintaining family priorities",
+      "Earn ₹25,000–75,000/month working flexible hours",
+    ],
+  },
 ];
 
-const resources = [
-  "Complete Export Guide",
-  "Export Readiness Checklist",
-  "Documentation Templates",
-  "Product Selection Guide",
-  "Buyer Search Playbook",
-  "Export Cost Calculator",
-  "Country Market Reports",
+const careerPaths = [
+  {
+    category: "Corporate Careers",
+    icon: Briefcase,
+    color: "bg-blue-50 border-blue-100",
+    iconColor: "text-blue-600",
+    salary: "₹4–25 LPA",
+    opportunities: [
+      "Export/Import Executive — Lead international trade operations",
+      "Documentation Specialist — High-demand compliance expert",
+      "Logistics Coordinator — Manage global supply chains",
+      "Customs Compliance Officer — Navigate complex regulations",
+      "Trade Finance Executive — Handle million-dollar transactions",
+      "International Marketing Manager — Build global brand presence",
+      "Export Manager — Drive company's international expansion",
+      "Freight Forwarder — Own a critical link in global trade",
+      "Earn up to ₹25 LPA + International Opportunities",
+    ],
+  },
+  {
+    category: "Build Your Own Empire",
+    icon: TrendingUp,
+    color: "bg-amber-50 border-amber-100",
+    iconColor: "text-amber-600",
+    salary: "Unlimited",
+    opportunities: [
+      "Launch your export-import venture with minimal startup costs",
+      "Master compliance & documentation to avoid costly mistakes",
+      "Connect with verified global buyers using our proven methods",
+      "Build efficient logistics networks for maximum profitability",
+      "Scale to ₹1+ crore annual revenue within 2–3 years",
+    ],
+  },
+  {
+    category: "Leadership & Consulting",
+    icon: Award,
+    color: "bg-purple-50 border-purple-100",
+    iconColor: "text-purple-600",
+    salary: "₹12–50 LPA",
+    opportunities: [
+      "Trade Analyst — Shape global trade policies and decisions",
+      "Supply Chain Manager — Optimize multi-million dollar operations",
+      "International Trade Consultant — Command ₹2,000–5,000/hour rates",
+      "Indian Trade Service (ITS) — Prestigious government career",
+      "DGFT & Policy Roles — Drive India's export strategy",
+    ],
+  },
+  {
+    category: "International Opportunities",
+    icon: Globe2,
+    color: "bg-green-50 border-green-100",
+    iconColor: "text-green-600",
+    salary: "Global Pay",
+    opportunities: [
+      "Work abroad in UAE, Singapore, Canada, Germany, SE Asia, Africa",
+      "Earn international salaries & tax benefits",
+      "Build a powerful global professional network",
+      "Get visa sponsorship from international employers seeking your skills",
+    ],
+  },
 ];
+
 
 const faqs = [
   { q: "Do I need prior experience?", a: "No. Our foundation program is designed for absolute beginners." },
@@ -359,6 +415,122 @@ function Academy() {
         </div>
       </section>
 
+
+
+ {/* PROGRAMS */}
+ 
+
+    <section className="py-20 bg-muted/30">
+      <div className="container mx-auto max-w-5xl px-6">
+
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12 text-center"
+        >
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Education Division</p>
+          <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Choose Your Learning Path</h2>
+          <p className="mt-3 text-muted-foreground text-sm md:text-base">
+            Select the format that best fits your schedule and learning preferences
+          </p>
+        </motion.div>
+
+        {/* Cards */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {learningPaths.map((plan, idx) => (
+            <motion.div
+              key={plan.type}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.15, duration: 0.5 }}
+              className={`relative rounded-3xl border-2 ${plan.color} bg-background flex flex-col overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300`}
+            >
+              {/* Badge */}
+              <div className="absolute top-4 right-4">
+                <span className="rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold text-primary uppercase tracking-wider">
+                  {plan.badge}
+                </span>
+              </div>
+
+              <div className="p-6 flex flex-col flex-1">
+
+                {/* Title */}
+                <div className="mb-4">
+                  <h3 className="text-lg font-extrabold text-foreground">{plan.type}</h3>
+                  <p className="text-sm text-primary mt-0.5">{plan.desc}</p>
+                </div>
+
+                {/* Price */}
+                <div className="flex items-baseline gap-3 bg-muted rounded-2xl px-4 py-3 mb-5">
+                  <span className="text-3xl font-extrabold text-foreground">{plan.price}</span>
+                  <span className="text-sm text-muted-foreground line-through">{plan.original}</span>
+                  <span className="ml-auto text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                    Save ₹5,000
+                  </span>
+                </div>
+
+                {/* Schedule */}
+                <div className="bg-muted/60 rounded-2xl px-4 py-3 mb-5">
+                  <p className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wider">Schedule</p>
+                  <div className="space-y-1.5">
+                    {[
+                      { icon: Calendar, text: plan.schedule.day },
+                      { icon: Clock,    text: plan.schedule.duration },
+                      { icon: BookOpen, text: plan.schedule.total },
+                    ].map(({ icon: Icon, text }) => (
+                      <div key={text} className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <Icon className="h-3.5 w-3.5 text-primary shrink-0" />
+                        {text}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Features */}
+                <ul className="space-y-2 mb-6 flex-1">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-foreground">
+                      <CheckCircle className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA */}
+                <Link
+                  to="/contact"
+                  className="mt-auto w-full inline-flex items-center justify-center rounded-2xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90 hover:scale-[1.02] active:scale-100"
+                >
+                  {plan.cta}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom note */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-8 text-center text-xs text-muted-foreground"
+        >
+          🎓 Both courses include a Certificate of Completion & lifetime helpdesk support.{" "}
+          <Link to="/contact" className="text-primary font-medium hover:underline">
+            Have questions? Contact us →
+          </Link>
+        </motion.p>
+
+      </div>
+    </section>
+
+
+
       {/* WHO SHOULD JOIN */}
       <Section>
         <SectionHeading
@@ -390,51 +562,178 @@ function Academy() {
         </div>
       </Section>
 
-      {/* PROGRAMS */}
-      <Section surface>
-        <SectionHeading
-          eyebrow="Academy Programs"
-          title="Seven specialised programs. One export-ready you."
-          center
-        />
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {programs.map((p, i) => (
-            <div key={p.title} className="rounded-2xl border border-border bg-card p-7 shadow-soft">
-              <div className="flex items-start justify-between gap-4">
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-secondary/10">
-                  <p.icon className="h-6 w-6 text-secondary" />
-                </div>
-                <div className="font-display text-3xl font-extrabold text-gradient-gold">
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-              </div>
-              <h3 className="mt-5 font-display text-xl font-bold text-primary">{p.title}</h3>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <span className="rounded-full bg-secondary/10 px-3 py-1 text-xs font-semibold text-secondary">
-                  {p.duration}
-                </span>
-                <span className="rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent-foreground">
-                  {p.mode}
-                </span>
-                <span className="rounded-full bg-muted px-3 py-1 text-xs font-semibold text-foreground/70">
-                  Ideal: {p.audience}
-                </span>
-              </div>
-              <div className="mt-5 border-t border-border pt-5">
-                <div className="text-xs font-semibold uppercase tracking-wider text-foreground/60">Curriculum</div>
-                <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-                  {p.modules.map((m) => (
-                    <li key={m} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
-                      {m}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+     
+
+
+
+<section className="py-20 bg-background">
+      <div className="container mx-auto max-w-6xl px-6">
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-14"
+        >
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">
+            Course Benefits
+          </p>
+          <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">
+            Transform Your Career in Global Trade
+          </h2>
+          <p className="mt-3 text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
+            Discover the life-changing benefits of our export-import course and join thousands who've launched successful careers.
+          </p>
+        </motion.div>
+
+        {/* ── Section 1: Designed For Your Success ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-px flex-1 bg-border" />
+            <span className="text-sm font-bold text-foreground uppercase tracking-widest px-4 py-2 rounded-full border border-border bg-muted">
+              Designed for Your Success Journey
+            </span>
+            <div className="h-px flex-1 bg-border" />
+          </div>
+
+          {/* Table header */}
+          <div className="hidden md:grid grid-cols-[220px_1fr] gap-0 rounded-t-2xl overflow-hidden border border-border">
+            <div className="bg-primary px-6 py-3">
+              <p className="text-xs font-bold uppercase tracking-widest text-white">Profile</p>
             </div>
-          ))}
-        </div>
-      </Section>
+            <div className="bg-primary px-6 py-3 border-l border-white/20">
+              <p className="text-xs font-bold uppercase tracking-widest text-white">Key Benefits</p>
+            </div>
+          </div>
+
+          <div className="border border-border border-t-0 rounded-b-2xl overflow-hidden divide-y divide-border">
+            {careerProfiles.map((row, i) => (
+              <motion.div
+                key={row.profile}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="grid md:grid-cols-[220px_1fr] gap-0 hover:bg-muted/40 transition-colors"
+              >
+                {/* Profile cell */}
+                <div className={`px-6 py-5 flex items-start gap-3 border-r border-border`}>
+                  <div className={`mt-0.5 h-2.5 w-2.5 rounded-full shrink-0 ${row.color.split(" ")[0].replace("text-", "bg-")}`} />
+                  <p className="text-sm font-bold text-foreground leading-snug">{row.profile}</p>
+                </div>
+                {/* Benefits cell */}
+                <div className="px-6 py-5">
+                  <ul className="space-y-2">
+                    {row.benefits.map((b, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm text-foreground/80">
+                        <CheckCircle className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ── Section 2: Career Paths ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-px flex-1 bg-border" />
+            <span className="text-sm font-bold text-foreground uppercase tracking-widest px-4 py-2 rounded-full border border-border bg-muted">
+              High-Paying Career Paths That Await You
+            </span>
+            <div className="h-px flex-1 bg-border" />
+          </div>
+
+          {/* Table header */}
+          <div className="hidden md:grid grid-cols-[200px_1fr_120px] gap-0 rounded-t-2xl overflow-hidden border border-border">
+            <div className="bg-primary px-6 py-3">
+              <p className="text-xs font-bold uppercase tracking-widest text-white">Category</p>
+            </div>
+            <div className="bg-primary px-6 py-3 border-l border-white/20">
+              <p className="text-xs font-bold uppercase tracking-widest text-white">Opportunities</p>
+            </div>
+            <div className="bg-primary px-6 py-3 border-l border-white/20">
+              <p className="text-xs font-bold uppercase tracking-widest text-white">Earning</p>
+            </div>
+          </div>
+
+          <div className="border border-border border-t-0 rounded-b-2xl overflow-hidden divide-y divide-border">
+            {careerPaths.map((path, i) => (
+              <motion.div
+                key={path.category}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="grid md:grid-cols-[200px_1fr_120px] hover:bg-muted/40 transition-colors"
+              >
+                {/* Category */}
+                <div className="px-6 py-5 border-r border-border flex flex-col justify-start gap-3">
+                  <div className={`w-fit rounded-xl p-2 border ${path.color}`}>
+                    <path.icon className={`h-5 w-5 ${path.iconColor}`} />
+                  </div>
+                  <p className="text-sm font-bold text-foreground leading-snug">{path.category}</p>
+                </div>
+                {/* Opportunities */}
+                <div className="px-6 py-5 border-r border-border">
+                  <ul className="space-y-1.5">
+                    {path.opportunities.map((o, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm text-foreground/80">
+                        <ArrowRight className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
+                        {o}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {/* Earning */}
+                <div className="px-6 py-5 flex items-center justify-center">
+                  <div className="text-center">
+                    <p className="text-base font-extrabold text-primary">{path.salary}</p>
+                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">potential</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center"
+        >
+          <p className="text-sm text-muted-foreground mb-4">
+            🎓 Join 1000+ professionals who transformed their careers with our EXIM course
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-full gradient-gold px-8 py-4 text-sm font-semibold text-accent-foreground shadow-gold transition hover:scale-[1.03]"
+          >
+            Enroll Now & Transform Your Career
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </motion.div>
+
+      </div>
+    </section>
+
+
+
 
       {/* COURSE FEATURES */}
       <Section>
@@ -451,6 +750,11 @@ function Academy() {
           ))}
         </div>
       </Section>
+
+
+
+
+
 
       {/* CURRICULUM & OUTCOMES */}
       <Section surface>
@@ -525,7 +829,7 @@ function Academy() {
       </Section>
 
       {/* CAREERS + FREE RESOURCES */}
-      <Section surface>
+      {/* <Section surface>
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <SectionHeading eyebrow="Career Opportunities" title="Roles our alumni land." />
@@ -564,7 +868,7 @@ function Academy() {
             </ul>
           </div>
         </div>
-      </Section>
+      </Section> */}
 
       {/* FAQ */}
       <Section>
@@ -588,7 +892,7 @@ function Academy() {
       </Section>
 
       {/* ENROLLMENT */}
-      <Section surface id="enroll">
+      {/* <Section surface id="enroll">
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <SectionHeading
@@ -626,7 +930,7 @@ function Academy() {
             </div>
           </div>
         </div>
-      </Section>
+      </Section> */}
     </>
   );
 }

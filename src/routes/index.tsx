@@ -7,8 +7,16 @@ import {
 } from "lucide-react";
 import { divisions, stats, countries } from "@/data/divisions";
 import { Section, SectionHeading } from "@/components/site/Section";
+import { CheckCircle, Calendar, Clock, BookOpen } from "lucide-react";
+import iso from "@/assets/ISO.png";
+import fssai from "@/assets/FSSAI_logo.png";
+import apeda from "@/assets/apeda.png";
+import usda from "@/assets/USDA_logo.png";
+import msme from "@/assets/msme.png";
+import spiceBoard from "@/assets/Spices_Board_of_India_Logo.png";
 
 const iconMap = { GraduationCap, BarChart3, Briefcase, Ship, Megaphone, Wheat };
+const certificates = [iso, fssai, apeda, usda, msme, spiceBoard];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,8 +40,11 @@ function Home() {
       <DivisionsGrid />
       <WhyChoose />
       <Stats />
-      <Success />
+     
       <Presence />
+      <Course />
+      <Certificates />
+       <Success />
       <CtaBlock />
     </>
   );
@@ -303,38 +314,6 @@ function Stats() {
   );
 }
 
-function Success() {
-  const stories = [
-    { name: "Rohan Mehta", role: "Founder, Agro Exports", quote: "ORCEA Academy turned an idea into a fully operational export business within six months." },
-    { name: "Aisha Khan", role: "Director, FreshFruits Co.", quote: "Their consulting and logistics teams helped us enter UAE and Saudi markets seamlessly." },
-    { name: "Daniel Carter", role: "CEO, BrandLabs", quote: "Best end-to-end partner we've worked with — strategy, marketing, and execution." },
-  ];
-  return (
-    <Section surface>
-      <SectionHeading eyebrow="Success Stories" title="Trusted by founders and enterprises worldwide." center />
-      <div className="mt-14 grid gap-6 md:grid-cols-3">
-        {stories.map((s) => (
-          <div key={s.name} className="rounded-2xl border border-border bg-card p-7 shadow-soft">
-            <div className="flex gap-1 text-accent">
-              {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-foreground/85">"{s.quote}"</p>
-            <div className="mt-6 flex items-center gap-3 border-t border-border pt-4">
-              <div className="grid h-10 w-10 place-items-center rounded-full gradient-hero font-display text-sm font-bold text-primary-foreground">
-                {s.name.split(" ").map(n => n[0]).join("")}
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-primary">{s.name}</div>
-                <div className="text-xs text-muted-foreground">{s.role}</div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
 function Presence() {
   return (
    <Section>
@@ -462,6 +441,269 @@ function Presence() {
   );
 }
 
+
+const learningPaths = [
+  {
+    type: "Online Course",
+    desc: "Learn from anywhere with an internet connection",
+    price: "₹10,000",
+    original: "₹15,000",
+    cta: "Start Online Learning",
+    color: "border-accent",
+    badge: "Most Popular",
+    schedule: { day: "Every Sunday", duration: "4 hours", total: "Duration: 6 Sundays" },
+    features: [
+      "Live Online Lectures on Zoom",
+      "Study Materials",
+      "Copy of Document Templates",
+      "Buyers Communication Templates",
+      "Online Mentor Support",
+      "Lifetime EXIM Updates/News",
+      "Certificate of Completion",
+      "Post-course mentorship to guide your first export",
+      "Free Lifetime Helpdesk Support on Email",
+      "Guidance for Job in Export Import Industry",
+      "Free Assistance for Website & Digital Marketing",
+      "Free Latest Updates on Export Import",
+      "Live Searching Exporter-Importer (Buyers) Data",
+    ],
+  },
+  {
+    type: "Offline Course",
+    desc: "Intensive classroom training with hands-on practice",
+    price: "₹15,000",
+    original: "₹20,000",
+    cta: "Join Classroom Training",
+    color: "border-primary",
+    badge: "Hands-On",
+    schedule: { day: "Every Sunday", duration: "4 hours", total: "Duration: 6 Sundays" },
+    features: [
+      "Face to Face Classroom Training with Expert Faculty",
+      "Printed Study Materials & Document Kits",
+      "Buyers Communication Practice Sessions",
+      "Mock Export-Import Documentation Practice",
+      "Personal Mentor Support",
+      "Lifetime EXIM Updates",
+      "Certificate of Completion",
+      "Post-course mentorship to guide your first export",
+      "Free Lifetime Helpdesk Support on Email",
+      "Guidance for Job in Export Import Industry",
+      "Free Assistance for Website & Digital Marketing",
+      "Free Latest Updates on Export-Import",
+      "Live Searching Exporter-Importer (Buyers) Data",
+    ],
+  },
+];
+
+
+function Course() {
+  return (
+    <section className="py-20 bg-muted/30">
+      <div className="container mx-auto max-w-5xl px-6">
+
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12 text-center"
+        >
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Education Division</p>
+          <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Choose Your Learning Path</h2>
+          <p className="mt-3 text-muted-foreground text-sm md:text-base">
+            Select the format that best fits your schedule and learning preferences
+          </p>
+        </motion.div>
+
+        {/* Cards */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {learningPaths.map((plan, idx) => (
+            <motion.div
+              key={plan.type}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.15, duration: 0.5 }}
+              className={`relative rounded-3xl border-2 ${plan.color} bg-background flex flex-col overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300`}
+            >
+              {/* Badge */}
+              <div className="absolute top-4 right-4">
+                <span className="rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold text-primary uppercase tracking-wider">
+                  {plan.badge}
+                </span>
+              </div>
+
+              <div className="p-6 flex flex-col flex-1">
+
+                {/* Title */}
+                <div className="mb-4">
+                  <h3 className="text-lg font-extrabold text-foreground">{plan.type}</h3>
+                  <p className="text-sm text-primary mt-0.5">{plan.desc}</p>
+                </div>
+
+                {/* Price */}
+                <div className="flex items-baseline gap-3 bg-muted rounded-2xl px-4 py-3 mb-5">
+                  <span className="text-3xl font-extrabold text-foreground">{plan.price}</span>
+                  <span className="text-sm text-muted-foreground line-through">{plan.original}</span>
+                  <span className="ml-auto text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                    Save ₹5,000
+                  </span>
+                </div>
+
+                {/* Schedule */}
+                <div className="bg-muted/60 rounded-2xl px-4 py-3 mb-5">
+                  <p className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wider">Schedule</p>
+                  <div className="space-y-1.5">
+                    {[
+                      { icon: Calendar, text: plan.schedule.day },
+                      { icon: Clock,    text: plan.schedule.duration },
+                      { icon: BookOpen, text: plan.schedule.total },
+                    ].map(({ icon: Icon, text }) => (
+                      <div key={text} className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <Icon className="h-3.5 w-3.5 text-primary shrink-0" />
+                        {text}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Features */}
+                <ul className="space-y-2 mb-6 flex-1">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-foreground">
+                      <CheckCircle className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA */}
+                <Link
+                  to="/contact"
+                  className="mt-auto w-full inline-flex items-center justify-center rounded-2xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90 hover:scale-[1.02] active:scale-100"
+                >
+                  {plan.cta}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom note */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-8 text-center text-xs text-muted-foreground"
+        >
+          🎓 Both courses include a Certificate of Completion & lifetime helpdesk support.{" "}
+          <Link to="/contact" className="text-primary font-medium hover:underline">
+            Have questions? Contact us →
+          </Link>
+        </motion.p>
+
+      </div>
+    </section>
+  );
+}
+
+
+function Certificates(){
+return(
+
+      <section className="py-16 bg-background overflow-hidden px-8">
+
+        <div className="text-center mb-12">
+          <p className="text-primary font-semibold uppercase text-sm tracking-wider">
+            Certification Approval
+          </p>
+
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2">
+            Certifications & Compliance Logos
+          </h2>
+        </div>
+
+        <div className="relative w-full overflow-hidden">
+
+          {/* Left Fade */}
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-background to-transparent z-10"></div>
+
+          {/* Right Fade */}
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-background to-transparent z-10"></div>
+
+          <motion.div
+            className="flex gap-8 w-max"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              ease: "linear",
+              duration: 25,
+              repeat: Infinity
+            }}
+          >
+            {[...certificates, ...certificates].map((logo, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-center 
+          bg-muted border border-border 
+          rounded-xl shadow-sm
+          px-8 py-6
+          min-w-[160px]"
+              >
+                <img
+                  src={logo}
+                  alt="certificate"
+                  className="h-10 md:h-12 object-contain"
+                />
+              </div>
+            ))}
+          </motion.div>
+
+        </div>
+
+      </section>
+
+);
+
+}
+
+
+
+
+function Success() {
+  const stories = [
+    { name: "Rohan Mehta", role: "Founder, Agro Exports", quote: "ORCEA Academy turned an idea into a fully operational export business within six months." },
+    { name: "Aisha Khan", role: "Director, FreshFruits Co.", quote: "Their consulting and logistics teams helped us enter UAE and Saudi markets seamlessly." },
+    { name: "Daniel Carter", role: "CEO, BrandLabs", quote: "Best end-to-end partner we've worked with — strategy, marketing, and execution." },
+  ];
+  return (
+    <Section surface>
+      <SectionHeading eyebrow="Success Stories" title="Trusted by founders and enterprises worldwide." center />
+      <div className="mt-14 grid gap-6 md:grid-cols-3">
+        {stories.map((s) => (
+          <div key={s.name} className="rounded-2xl border border-border bg-card p-7 shadow-soft">
+            <div className="flex gap-1 text-accent">
+              {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-foreground/85">"{s.quote}"</p>
+            <div className="mt-6 flex items-center gap-3 border-t border-border pt-4">
+              <div className="grid h-10 w-10 place-items-center rounded-full gradient-hero font-display text-sm font-bold text-primary-foreground">
+                {s.name.split(" ").map(n => n[0]).join("")}
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-primary">{s.name}</div>
+                <div className="text-xs text-muted-foreground">{s.role}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+
 function CtaBlock() {
   return (
     <section className="container-x mx-auto max-w-7xl pb-20">
@@ -490,3 +732,4 @@ function CtaBlock() {
     </section>
   );
 }
+
