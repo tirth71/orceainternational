@@ -40,7 +40,6 @@ function Home() {
       <DivisionsGrid />
       <WhyChoose />
       <Stats />
-     
       <Presence />
       <Course />
       <Certificates />
@@ -211,7 +210,6 @@ function AboutBlock() {
     </Section>
   );
 }
-
 function DivisionsGrid() {
   return (
     <Section surface>
@@ -227,32 +225,58 @@ function DivisionsGrid() {
           return (
             <motion.div
               key={d.slug}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
+              whileHover={{ y: -6 }}
             >
               <Link
                 to={d.href}
-                className="group relative block h-full overflow-hidden rounded-3xl border border-border bg-card p-7 shadow-soft transition hover:-translate-y-1.5 hover:border-secondary/30 hover:shadow-elegant"
+                className="group relative flex flex-col h-full overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-300 hover:shadow-elegant hover:border-accent/30"
               >
-                <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-accent/10 blur-2xl transition group-hover:bg-accent/20" />
-                <div className="relative grid h-14 w-14 place-items-center rounded-2xl gradient-hero text-primary-foreground shadow-soft">
-                  <Icon className="h-7 w-7" />
-                </div>
-                <h3 className="relative mt-6 font-display text-xl font-bold text-primary">{d.name}</h3>
-                <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">{d.description}</p>
-                <ul className="relative mt-5 space-y-1.5">
-                  {d.services.slice(0, 3).map((s) => (
-                    <li key={s} className="flex items-center gap-2 text-xs text-foreground/70">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-                <div className="relative mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-secondary">
-                  Learn more
-                  <ChevronRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                {/* Top color bar */}
+                <div className="h-1.5 w-full gradient-hero" />
+
+                <div className="flex flex-col flex-1 p-7">
+
+                  {/* Icon + Number */}
+                  <div className="flex items-start justify-between mb-5">
+                    <div className="grid h-14 w-14 place-items-center rounded-2xl gradient-hero text-primary-foreground shadow-soft">
+                      <Icon className="h-7 w-7" />
+                    </div>
+                    <span className="text-4xl font-extrabold text-border group-hover:text-accent/20 transition-colors select-none">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  {/* Title + Desc */}
+                  <h3 className="font-display text-xl font-bold text-primary group-hover:text-accent transition-colors">
+                    {d.name}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground flex-1">
+                    {d.description}
+                  </p>
+
+                  {/* Divider */}
+                  <div className="my-5 h-px bg-border group-hover:bg-accent/20 transition-colors" />
+
+                  {/* Services */}
+                  <ul className="space-y-2 mb-6">
+                    {d.services.slice(0, 3).map((s) => (
+                      <li key={s} className="flex items-center gap-2 text-xs text-foreground/70">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-accent shrink-0" />
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA */}
+                  <div className="mt-auto inline-flex items-center gap-2 rounded-full border border-border bg-muted px-4 py-2 text-xs font-semibold text-foreground group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 w-fit">
+                    Explore Division
+                    <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                  </div>
+
                 </div>
               </Link>
             </motion.div>
