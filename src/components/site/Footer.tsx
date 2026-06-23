@@ -63,7 +63,7 @@ export function Footer() {
             <div className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Get in touch</div>
             <ul className="mt-5 space-y-3 text-sm text-primary-foreground/80">
               <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 text-accent shrink-0" /><span>+91 00000 00000</span></li>
-              <li className="flex gap-3"><Mail className="mt-0.5 h-4 w-4 text-accent shrink-0" /><span>info@orceagroup.com</span></li>
+              <li className="flex gap-3"><Mail className="mt-0.5 h-4 w-4 text-accent shrink-0" /><span>info@orceainternational.com</span></li>
               <li className="flex gap-3"><MapPin className="mt-0.5 h-4 w-4 text-accent shrink-0" /><span>Rajkot, India</span></li>
             </ul>
           </div>
@@ -71,10 +71,17 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-primary-foreground/60 sm:flex-row">
           <div>© {new Date().getFullYear()} ORCEA International. All rights reserved.</div>
-          {/* <div className="flex gap-6">
-            <a href="#" className="hover:text-accent">Privacy</a>
-            <a href="#" className="hover:text-accent">Terms</a>
-          </div> */}
+          <div className="flex gap-2.4">
+            Developed by{""}
+        <a
+          href="https://www.linkedin.com/in/tirth-savaliya-115187252"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-accent"
+        >
+          Tirthsavaliya
+        </a>
+          </div>
         </div>
       </div>
     </footer>
